@@ -25,7 +25,7 @@ SECRET_KEY = 'u9&29s4)$2mp$$#*ghwm^8@12p#b7p3=*w(x9s47v4gx7i)1dv'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'pythonanywhere.com']
 
 
 # Application definition
@@ -38,6 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'board',
+]
+
+INSTALLED_APPS += [
+    'song'
 ]
 
 MIDDLEWARE = [
