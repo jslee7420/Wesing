@@ -11,7 +11,8 @@ class Post(models.Model):
             default=timezone.now)
     published_date = models.DateTimeField(
             blank=True, null=True)
-    is_notice=models.BooleanField()
+    is_notice=models.BooleanField(default=False)
+    view = models.IntegerField(default=0)
 
     def publish(self):
         self.published_date = timezone.now()

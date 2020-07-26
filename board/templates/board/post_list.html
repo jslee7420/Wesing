@@ -2,11 +2,44 @@
 
 
 {% block content %}
-    {% for post in posts %}
-        <div>
-            {{post.pk}}
-            {{post.title}}
-            {{post.published_date}}
+    <div class="page-header">
+        <div class="row">
+            <div class="col-md-3">
+                <h1>커뮤니티</h1>
+            </div>
         </div>
-    {% endfor %}
+    </div>
+
+    <div class="content container">
+        <div class="row">
+            <a href="{% url 'post_new' %}">글 작성하기</a>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                번호
+            </div>
+            <div class="col-md-6">
+                제목
+            </div>
+            <div class="col-md-2">
+                등록일
+            </div>
+            <div class="col-md-2">
+                조회수
+            </div>
+        </div>
+        <div class="row">
+            {% for post in posts %}
+            <div>
+            {{post.pk}}
+            <a href="{% url 'post_detail' pk=post.pk %}">{{post.title}}</a>
+            {{post.published_date.date}}
+            {{post.view}}
+            </div>
+            {% endfor %}
+        </div>
+        
+
+    </div>
+    
 {% endblock %}

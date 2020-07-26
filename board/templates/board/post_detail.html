@@ -1,0 +1,28 @@
+{% extends 'board/base.html' %}
+
+{% block content %}
+    <div class="page-header">
+        <div class="row">
+            <div class="col-md-3">
+                <h1>커뮤니티</h1>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <a href="{% url 'post_edit' pk=post.pk %}">글 수정하기</a>
+        <div class="title">
+            {{post.title}}
+            {{post.published_date.date}}
+            {{post.view}}
+        </div>
+
+        <div class="text">
+            {{post.text}}
+        </div>
+
+
+        <a href="{% url 'post_list' %}">목록으로 돌아가기</a>
+    </div>
+
+{% endblock %}

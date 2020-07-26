@@ -1,0 +1,8 @@
+{% extends 'board/base.html' %}
+
+{% block content %}
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">저장</button>
+    </form>
+{% endblock %}
