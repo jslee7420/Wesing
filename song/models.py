@@ -1,13 +1,12 @@
-from django.contrib.auth.models import User
 from django.db import models
+from django.conf import settings
 
 
 class Song(models.Model):
+    author = models.CharField(max_length=250)
     title = models.CharField(max_length=250)
-    audio = models.FileField(upload_to='timeline_photo/%Y/%m/%d')
+    audio = models.FileField(upload_to='aac/')
     lyric = models.TextField()
-    like = models.ManyToManyField(User)
+    timeline = models.TextField()
+    like = models.ManyToManyField(settings.AUTH_USER_MODEL)
     view = models.PositiveIntegerField(default=0)
-
-    def __str__(self):
-        return self.title
