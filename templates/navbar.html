@@ -1,0 +1,20 @@
+<!-- 네비게이션바 -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="#">WeSing</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">ACC로 노래해요 <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">ACC로 활동해요</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'board:post_list' %}">커뮤니티</a>
+        </li>
+      </ul>
+    </div>
+  </nav>

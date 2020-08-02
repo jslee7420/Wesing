@@ -1,25 +1,29 @@
 {% load static %}
+<!doctype html>
 
-<html>
+<html lang="ko">
     <head>
-        <title>WeSing</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+        <!-- pybo CSS -->
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+        <title>Hello, pybo!</title>
     </head>
-
-
     <body>
-        <div class="nav-bar">
-            <h1> WeSing</h1>
-            <div class="menu">
-                <a href="">AAC로 노래해요</a>
-                <a href="">AAC로 활동해요</a>
-                <a href="">커뮤니티</a>
-            </div>
-        </div>
+        {% include "navbar.html" %}
 
-        <div class="content">
-            {% block content %}
-            {% endblock %}
-        </div>
+        <!-- 기본 템플릿 안에 삽입될 내용 Start -->
+        {% block content %}
+        {% endblock %}
+        <!-- 기본 템플릿 안에 삽입될 내용 End -->
 
+
+        <!-- jQuery JS -->
+        <script src="{% static 'jquery-3.4.1.min.js' %}"></script>
+        <!-- Bootstrap JS -->
+        <script src="{% static 'bootstrap.min.js' %}"></script>
     </body>
 </html>

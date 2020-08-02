@@ -1,16 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="page-header">
-        <div class="row">
-            <div class="col-md-3">
-                <h1>커뮤니티</h1>
-            </div>
-        </div>
-    </div>
+    {% include 'board/board_base.html' %}
 
     <div>
-        <a href="{% url 'post_edit' pk=post.pk %}">글 수정하기</a>
+        <a href="{% url 'board:post_edit' pk=post.pk %}">글 수정하기</a>
         <div class="title">
             {{post.title}}
             {{post.published_date.date}}
@@ -22,7 +16,7 @@
         </div>
 
 
-        <a href="{% url 'post_list' %}">목록으로 돌아가기</a>
+        <a href="{% url 'board:post_list' %}">목록으로 돌아가기</a>
     </div>
 
 {% endblock %}

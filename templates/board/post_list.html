@@ -1,45 +1,126 @@
 {% extends 'base.html' %}
-
-
+{% load board_filter %}
 {% block content %}
-    <div class="page-header">
-        <div class="row">
-            <div class="col-md-3">
-                <h1>커뮤니티</h1>
-            </div>
-        </div>
-    </div>
-
-    <div class="content container">
-        <div class="row">
-            <a href="{% url 'post_new' %}">글 작성하기</a>
-        </div>
-        <div class="row">
-            <div class="col-md-2">
-                번호
-            </div>
-            <div class="col-md-6">
-                제목
-            </div>
-            <div class="col-md-2">
-                등록일
-            </div>
-            <div class="col-md-2">
-                조회수
-            </div>
-        </div>
-        <div class="row">
-            {% for post in posts %}
-            <div>
-            {{post.pk}}
-            <a href="{% url 'post_detail' pk=post.pk %}">{{post.title}}</a>
-            {{post.published_date.date}}
-            {{post.view}}
-            </div>
-            {% endfor %}
-        </div>
-        
-
-    </div>
+    {% include 'board/board_base.html' %}
     
+    
+
+    <div class="container my-3">
+        <div class="row justify-content-end my-3">
+            <div class="col-4 input-group">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="btn_search" image="">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+                            <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+                          </svg>
+                    </button>
+                </div>
+                <input type="text" class="form-control kw" value="{{ kw|default_if_none:'' }}">
+            </div>
+        </div>
+        <a href="{% url 'board:post_new' %}">글 작성하기</a>
+        <table class="table">
+            <thead>
+            <tr class="thead-dark">
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>등록일</th>
+                <th>조회수</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if posts %}
+            {% for post in posts %}
+            <tr>
+                <td>
+                    {% if post.is_notice %}
+                        공지
+                    {% else %}
+                        {{ posts.paginator.count|sub:posts.start_index|sub:forloop.counter0|add:1 }}
+                    {% endif%}
+                </td>
+                <td>
+                    <a href="{% url 'board:post_detail' post.id %}">{{ post.title }}</a>
+                </td>
+                <td>{{post.author}}</td>
+                <td>{{ post.created_date.date }}</td>
+                <td>{{post.view}}</td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+                <td colspan="3">질문이 없습니다.</td>
+            </tr>
+            {% endif %}
+            </tbody>
+        </table>
+
+         <!-- 페이징처리 시작 -->
+        <ul class="pagination justify-content-center">
+            <!-- 이전페이지 -->
+            {% if posts.has_previous %}
+            <li class="page-item">
+                <a class="page-link" data-page="{{ posts.previous_page_number }}" href="#"><</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" tabindex="-1" aria-disabled="true" href="#"><</a>
+            </li>
+            {% endif %}
+            <!-- 페이지리스트 -->
+            {% for page_number in posts.paginator.page_range %}
+                {% if page_number >= posts.number|add:-5 and page_number <= posts.number|add:5 %}
+                    {% if page_number == posts.number %}
+                    <li class="page-item active" aria-current="page">
+                        <a class="page-link" data-page="{{ page_number }}" href="#">{{ page_number }}</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item">
+                        <a class="page-link" data-page="{{ page_number }}" href="#">{{ page_number }}</a>
+                    </li>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            <!-- 다음페이지 -->
+            {% if posts.has_next %}
+            <li class="page-item">
+                <a class="page-link" data-page="{{ posts.next_page_number }}" href="#">></a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" tabindex="-1" aria-disabled="true" href="#">></a>
+            </li>
+            {% endif %}
+        </ul>
+        <!-- 페이징처리 끝 -->
+    </div>
+    <form id="searchForm" method="get" action="{% url 'board:post_list' %}">
+        <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
+        <input type="hidden" id="page" name="page" value="{{ page }}">
+    </form>
+{% endblock %}
+
+
+{% block script %}
+<script type='text/javascript'>
+$(document).ready(function(){
+    $(".page-link").on('click', function() {
+        $("#page").val($(this).data("page"));
+        $("#searchForm").submit();
+    });
+
+    $("#btn_search").on('click', function() {
+        $("#kw").val($(".kw").val());
+        $("#page").val(1);  // 검색버튼을 클릭할 경우 1페이지부터 조회한다.
+        $("#searchForm").submit();
+    });
+    $(".so").on('change', function() {
+        $("#so").val($(this).val());
+        $("#page").val(1);
+        $("#searchForm").submit();
+    });
+});
+</script>
 {% endblock %}
