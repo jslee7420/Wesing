@@ -3,15 +3,18 @@ from django.conf import settings
 from django.utils import timezone
 
 # Create your models here.
+
+
 class Post(models.Model):
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     text = models.TextField()
     created_date = models.DateTimeField(
-            default=timezone.now)
+        default=timezone.now)
     published_date = models.DateTimeField(
-            blank=True, null=True)
-    is_notice=models.BooleanField(default=False)
+        blank=True, null=True)
+    is_notice = models.BooleanField(default=False)
     view = models.IntegerField(default=0)
 
     def publish(self):
@@ -20,10 +23,3 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
-
-class Answer(models.Model):
-    post = models.ForeignKey(Post, on_delete = models.CASCADE)
-    content = models.TextField()
-    created_date = models.DateTimeField()
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    
