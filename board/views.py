@@ -11,14 +11,14 @@ def post_list(request):
         커뮤니티, 게시글 및 공지글 목록 출력
     """
     # 입력 파라미터
-    page = request.GET.get('page', '1')  # 페이지
+    page = request.GET.get('page','1')  # 페이지
     kw = request.GET.get('kw', '')  # 검색어
 
     # 조회
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-is_notice','-published_date')
     if kw:
         posts = posts.filter(
-            Q(title__icontains=kw)
+            Q(title__icontains=kw) #제목 검색
         ).distinct()
 
     
