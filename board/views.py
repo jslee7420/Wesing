@@ -62,3 +62,12 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'board/post_edit.html', {'form': form})
+
+
+def answer_create(request, post_id):
+    """
+    답변등록
+    """
+    post = get_object_or_404(Post, pk=post_id)
+    post.answer_set.create(content=request.POST.get('content'), created_date=timezone.now(),author= request.user)
+    return redirect('board:post_detail', pk=post.id)
