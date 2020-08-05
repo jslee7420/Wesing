@@ -3,8 +3,8 @@ from django.conf import settings
 
 
 class Song(models.Model):
-    author = models.CharField(max_length=250)
     title = models.CharField(max_length=250)
+    author = models.CharField(max_length=250)
     audio = models.FileField(upload_to='aac/')
     lyric = models.TextField()
     timeline = models.TextField()
