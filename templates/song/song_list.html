@@ -2,7 +2,12 @@
 
 
 {% block content %}
-
-THIS IS SONG_LISTasfs
+    <h2>song</h2>
+    <ul>
+        {% for song in object_list %}
+            <li>{{ song.title }}</li>
+            <li>{{ song.author }}</li>
+        {% endfor %}
+    </ul>
     
 {% endblock %}
