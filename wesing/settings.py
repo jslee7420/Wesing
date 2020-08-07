@@ -41,7 +41,9 @@ INSTALLED_APPS = [
 
 INSTALLED_APPS += [
     'song',
-    'board'
+    'board',
+    'accounts',
+    'common',
 ]
 
 MIDDLEWARE = [
@@ -104,6 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'accounts.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -128,3 +131,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+LOGIN_REDIRECT_URL = '/board'
+LOGOUT_REDIRECT_URL = '/board'
