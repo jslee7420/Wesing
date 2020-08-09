@@ -1,8 +1,55 @@
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/nav.css' %}">
+
+{% block styles %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/nav.css' %}">
+{% endblock %}
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="nav-top">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="#">
+          WESING
+          <!-- <img src="\" width="112" height="28"> -->
+        </a>
+
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+          data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-start">
+        <a class="navbar-item">
+          AAC로 노래해요
+        </a>
+
+        <a class="navbar-item">
+          AAC로 활동해요
+        </a>
+
+        <a class="navbar-item">
+          커뮤니티
+        </a>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-bottom">
+NAVBAR-BOTTOM
+    </div>
+  </div>
+</nav>
 
 
-<nav class="navbar navbar-expand-lg navbar-light">
+
+<!-- <nav class="navbar navbar-expand-lg navbar-light">
   <a class="navbar-brand" href="#">WeSing</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
     aria-expanded="false" aria-label="Toggle navigation">
@@ -26,4 +73,4 @@
     <a class="nav-link" href="{% url 'common:login' %}">로그인</a>
     {% endif %}
   </div>
-</nav>
+</nav> -->

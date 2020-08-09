@@ -1,0 +1,21 @@
+/* modified from bulma.css */
+
+/* original css */
+.navbar-item {
+    color: white !important;
+    font-weight: bold;
+}
+
+a.navbar-item:hover {
+    color: rgb(235, 235, 235) !important;
+    background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.nav-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-top>div {
+    margin: 0;
+}
