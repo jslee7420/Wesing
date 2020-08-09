@@ -34,6 +34,18 @@
         </a>
       </div>
       <div class="navbar-end">
+        {% if user.is_authenticated %}
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="navbar-profile navbar-btn" href="#">
+              {{ user.username }}
+            </a>
+            <a class="navbar-profile navbar-btn" href="#">
+              LOGOUT
+            </a>
+          </div>
+        </div>
+        {% else %}
         <div class="navbar-item">
           <div class="buttons">
             <a class="navbar-login navbar-btn" href="#">
@@ -41,13 +53,7 @@
             </a>
           </div>
         </div>
-        <div class="navbar-item">
-          <div class="buttons">
-            <a class="navbar-profile navbar-btn" href="#">
-              {{ user.username }}
-            </a>
-          </div>
-        </div>
+        {% endif %}
       </div>
     </div>
     <div class="navbar-bottom">
