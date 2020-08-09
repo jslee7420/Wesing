@@ -1,12 +1,12 @@
 {% load static %}
 
 {% block styles %}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/nav.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/nav.css' %}">
 {% endblock %}
 
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="container">
-    <div class="nav-top">
+    <div class="navbar-top">
       <div class="navbar-brand">
         <a class="navbar-item" href="#">
           WESING
@@ -36,13 +36,33 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-
+            <a class="navbar-login navbar-btn" href="#">
+              LOGIN
+            </a>
+            <a class="navbar-signup navbar-btn" href="#">
+              SIGNUP
+            </a>
           </div>
         </div>
+        <!-- <div class="navbar-item">
+          <div class="buttons">
+            <a class="navbar-profile navbar-btn" href="#">
+              {{ user.username }}
+            </a>
+            <a class="navbar-logout navbar-btn" href="#">
+              LOGOUT
+            </a>
+          </div>
+        </div> -->
       </div>
     </div>
-    <div class="nav-bottom">
-NAVBAR-BOTTOM
+    <div class="navbar-bottom">
+      <div class="navbar-title">
+        AAC로 노래해요
+      </div>
+      <div class="navbar-subtitle">
+        AAC카드를 통해 노래를 배워봅시다.
+      </div>
     </div>
   </div>
 </nav>

@@ -11,11 +11,31 @@ a.navbar-item:hover {
     background-color: rgba(0, 0, 0, 0) !important;
 }
 
-.nav-top {
+.navbar-top {
     display: flex;
     justify-content: space-between;
 }
 
-.nav-top>div {
+.navbar-top>div {
     margin: 0;
+}
+
+.navbar-start>a {
+    margin: 0 10px;
+}
+
+.navbar-btn {
+    color: #fff !important;
+    margin: 0 10px;
+    padding: 4px 0;
+    border-bottom: 3px solid #fff;
+}
+
+.navbar-bottom {
+    color: #fff;
+    padding: 20px 0;
+}
+
+.navbar-bottom .navbar-title {
+    font-size: 36px;
 }
