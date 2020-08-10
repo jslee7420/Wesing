@@ -33,6 +33,12 @@ a.navbar-item:hover {
     padding: 4px 14px;
     border-radius: 16px;
     border: 2px solid #fff;
+    transition: .2s;
+}
+
+.navbar-btn:hover {
+    color: #FF7285 !important;
+    background-color: #fff !important;
 }
 
 .navbar-bottom {
