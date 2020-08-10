@@ -1,28 +1,28 @@
 {% extends 'base.html' %}
 {% load board_filter %}
 {% block content %}
-    {% include 'board/board_base.html' %}
     
-    
-
-    <div class="container my-3">
-        <div class="row justify-content-end my-3">
-            <div class="col-4 input-group">
-                <input type="text" class="form-control kw" value="{{ kw|default_if_none:'' }}">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" id="btn_search">
+<div class="section">
+    <div class="container content">
+        <!--검색-->
+        <div class="row">
+            <div class="col">
+                <span class="search_bar">
+                    <button type="button" id="btn_search">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
                             <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
                         </svg>
                     </button>
-                </div>
+                    <input type="text" class="form-control kw" value="{{ kw|default_if_none:'' }}">
+                </span>
+                <a class="button is-rounded create_post" href="{% url 'board:post_new' %}">글 작성하기</a>
             </div>
         </div>
-        <a href="{% url 'board:post_new' %}">글 작성하기</a>
-        <table class="table">
+        
+        <table class="table is-fullwidth is-hoverable">
             <thead>
-            <tr class="thead-dark">
+            <tr class="thead">
                 <th>번호</th>
                 <th>제목</th>
                 <th>작성자</th>
@@ -100,6 +100,7 @@
         <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
         <input type="hidden" id="page" name="page" value="{{ page }}">
     </form>
+</div>
 {% endblock %}
 
 

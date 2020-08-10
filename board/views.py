@@ -77,3 +77,9 @@ def answer_create(request, post_id):
     post.answer_set.create(content=request.POST.get(
         'content'), created_date=timezone.now(), author=request.user)
     return redirect('board:post_detail', pk=post.id)
+
+def get_context_date(self, **kwargs):
+    context = super(IndexView, self).get_context_data(**kwargs)
+    context['navbar_title']='커뮤니티'
+    context['navbar_subtitle']='커뮤니티에서 다양한 정보와 공지사항을 받아 보세요.'
+    return context
