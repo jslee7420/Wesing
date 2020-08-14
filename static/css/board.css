@@ -4,21 +4,22 @@
     border-width:1px;
     border-color:#CFCFCF;
     display: inline-block;
-    width:80%;
+    width:88%;
     height:40px;
-    margin-right:5%
 }
 
 #btn_search{
     border:none;
-    background-color: white;
+    background-color:transparent;
     margin-left:10px;
+    height:100%;
 }
 
 .kw{
     border:none;
     height:100%;
-    width:90%;
+    width:95%;
+    background-color: transparent;
 }
 
 .create_post{
@@ -27,10 +28,11 @@
     margin:0;
     background-color: #7600FF;
     color:white;
+    float:right;
 }
 
 .content{
-    margin-top:8%;
+    margin-top:5%;
     width:80%;
 }
 
@@ -54,4 +56,10 @@
     border-top:solid;
     border-width: 2px;
     border-color:#CFCFCF;
+}
+
+.login-input{
+    border:solid;
+    border-radius:25px;
+    border-width:1px;
 }

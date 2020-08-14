@@ -21,7 +21,7 @@
         </a>
       </div>
       <div class="navbar-start">
-        <a class="navbar-item">
+        <a class="navbar-item" href="{% url 'song:song_index' %}">
           AAC로 노래해요
         </a>
 
@@ -29,7 +29,7 @@
           AAC로 활동해요
         </a>
 
-        <a class="navbar-item">
+        <a class="navbar-item" href="{% url 'board:post_list' %}">
           커뮤니티
         </a>
       </div>
@@ -40,7 +40,7 @@
             <a class="navbar-profile navbar-btn" href="#">
               {{ user.username }}
             </a>
-            <a class="navbar-profile navbar-btn" href="#">
+            <a class="navbar-profile navbar-btn" href="{% url 'common:logout' %}">
               LOGOUT
             </a>
           </div>
@@ -48,7 +48,7 @@
         {% else %}
         <div class="navbar-item">
           <div class="buttons">
-            <a class="navbar-login navbar-btn" href="#">
+            <a class="navbar-login navbar-btn" href="{% url 'common:login' %}">
               LOGIN
             </a>
           </div>
