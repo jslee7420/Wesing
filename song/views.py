@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import *
-from . models import Song
+from .models import Song
 
 
 class IndexView(ListView):

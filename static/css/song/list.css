@@ -1,0 +1,47 @@
+.song-search {
+    margin: 40px 0;
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
+}
+
+.song-search-input {
+    width: 100%;
+    padding-right: 20px;
+}
+
+.song-search-input p {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.song-search-input .input {
+    width: 100%;
+}
+
+.song-search-filters {
+    display: flex;
+}
+
+.song-search-filter,
+.song-search-filter-active {
+    width: max-content;
+    margin-left: 16px;
+}
+
+.song-search-filters .song-search-filter {
+    border-radius: 16px;
+    color: black;
+    font-weight: 600;
+    padding: 8px 14px;
+    border: 1px solid #FF4E67;
+}
+
+.song-search-filters .song-search-filter-active {
+    border-radius: 16px;
+    color: white;
+    background-color: #FF7286;
+    font-weight: 600;
+    padding: 8px 14px;
+}
