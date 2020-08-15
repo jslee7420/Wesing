@@ -3,3 +3,15 @@
     src: url('../font/Jalnan.ttf') format('truetype'),
         url('../font/JalnanOTF.otf') format('opentype');
 }
+
+* {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+*::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Opera*/
+}
