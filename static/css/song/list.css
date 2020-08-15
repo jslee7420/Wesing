@@ -1,5 +1,5 @@
 .song-search {
-    margin: 40px 0;
+    margin: 40px 0 60px 0;
     display: flex;
     justify-content: stretch;
     align-items: center;
@@ -44,4 +44,28 @@
     background-color: #FF7286;
     font-weight: 600;
     padding: 8px 14px;
+}
+
+.song-item {
+    transition: .2s;
+}
+
+.song-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 20px;
+}
+
+.song-thumbnail img {
+    border-radius: 16px;
+    transition: .3s;
+}
+
+.song-thumbnail img:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    transform: scale(1.01);
+}
+
+.song-title {
+    color: #000;
 }

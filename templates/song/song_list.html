@@ -6,15 +6,13 @@
 {% endblock %}
 
 
-
-
 {% block content %}
 <div class="container">
     <div class="song-search">
         <div class="song-search-input">
-            <p class="has-icons-left">
+            <p class="control has-icons-left">
                 <span class="icon is-small is-left">
-                    <i class="fas fa-envelope"></i>
+                    <i class="fas fa-search"></i>
                 </span>
                 <input class="input is-rounded" type="text" placeholder="노래를 검색해보세요">
             </p>
@@ -28,15 +26,20 @@
             </a>
         </div>
     </div>
+    <div class="song-list">
+        {% for song in object_list %}
+        <div class="song-item">
+            <a href="/song/{{ song.id }}">
+                <div class="song-thumbnail">
+                    <img src="{% static 'images/thumbnail.jpg' %}" alt="thumbnail">
+                </div>
+                <div class="song-title">
+                    {{ song.title }}
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
 </div>
-
-
-<h2>song</h2>
-<ul>
-    {% for song in object_list %}
-    <li>{{ song.title }}</li>
-    <li>{{ song.author }}</li>
-    {% endfor %}
-</ul>
 
 {% endblock %}
