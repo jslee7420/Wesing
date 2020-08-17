@@ -20,14 +20,16 @@
     </div>
     <div class="song-info">
         <div class="song-info-left">
-            <div class="song-title"></div>
+            <div class="song-title">
+                {{ song.title }}
+            </div>
         </div>
         <div class="song-info-right">
             <div class="song-like">
-
+                {{ song.like.count }}
             </div>
             <div class="song-view">
-
+                {{ song.view }}
             </div>
             <div class="song-fullscreen">
 
@@ -46,4 +48,28 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'js/howler.js' %}"></script>
+<script>
+    var sound = new Howl({
+        src: ['{% static "song/audio/" %}{{ song.title }}.mp3']
+    });
+</script>
+<script>
+var images = {}
+var lyrics = []
+var lyricsText = {{ song.lyric }}
+var timeline = []
+var timeLineText = {{ song.timeline }}
+var photos = []
+var photosText = {{ song.photos }}
+
+{% for image in images %}
+images["{{ image.title }}.jpg"] = "{{ image.image }}"
+{% endfor %}
+
+console.log(images)
+</script>
 {% endblock %}

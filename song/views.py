@@ -2,7 +2,7 @@ from django.urls import reverse
 from django.shortcuts import render, redirect
 from django.forms import modelformset_factory
 from django.views.generic import *
-from .models import Song
+from .models import *
 
 
 class IndexView(ListView):
@@ -21,7 +21,9 @@ class DetailView(DetailView):
     template_name = 'song/song_detail.html'
 
     def get_context_data(self, **kwargs):
+        image = Image.objects.select_related('song')
         context = super(DetailView, self).get_context_data(**kwargs)
         context['navbar_title'] = 'AAC로 노래해요'
         context['navbar_subtitle'] = 'AAC로 노래해요'
+        context['images'] = image
         return context
