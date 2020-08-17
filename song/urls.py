@@ -7,6 +7,6 @@ app_name = "song"
 
 urlpatterns = [
     path('', IndexView.as_view(), name='song_index'),
-    url('<pk>/', SongList.as_view(), name='song_detail'),
+    # url('<pk>/', SongList.as_view(), name='song_detail'),
     path('<int:pk>/', DetailView.as_view(), name='song_detail'),
 ]
