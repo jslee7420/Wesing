@@ -13,7 +13,7 @@ class IndexView(ListView):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['navbar_title'] = 'AAC로 활동해요'
         context['navbar_subtitle'] = 'AAC 카드로 배운 노래를 응용해서 활동해보아요.'
-        context['navbar_background'] = 'background: linear-gradient(90deg, rgba(255, 113, 134, 1) 0%, rgba(236, 170, 97, 1) 50%, rgba(218, 221, 64, 1) 100%);'
+        context['navbar_background'] = 'background: linear-gradient(90deg, rgba(255,113,134,1) 0%, rgba(255,162,0,1) 0%, rgba(255,118,67,1) 100%);'
         return context
 
 
@@ -26,6 +26,6 @@ class DetailView(DetailView):
         context = super(DetailView, self).get_context_data(**kwargs)
         context['navbar_title'] = 'AAC로 활동해요'
         context['navbar_subtitle'] = 'AAC 카드로 배운 노래를 응용해서 활동해보아요.'
-        context['navbar_background'] = 'background: linear-gradient(90deg, rgba(255, 113, 134, 1) 0%, rgba(236, 170, 97, 1) 50%, rgba(218, 221, 64, 1) 100%);'
+        context['navbar_background'] = 'background: linear-gradient(90deg, rgba(255,113,134,1) 0%, rgba(255,162,0,1) 0%, rgba(255,118,67,1) 100%);'
         context['images'] = image
         return context
