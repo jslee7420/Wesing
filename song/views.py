@@ -12,7 +12,7 @@ class IndexView(ListView):
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['navbar_title'] = 'AAC로 노래해요'
-        context['navbar_subtitle'] = 'AAC로 노래해요'
+        context['navbar_subtitle'] = 'AAC 카드를 통해 노래를 배워봅시다.'
         return context
 
 
@@ -24,6 +24,6 @@ class DetailView(DetailView):
         image = Image.objects.select_related('song')
         context = super(DetailView, self).get_context_data(**kwargs)
         context['navbar_title'] = 'AAC로 노래해요'
-        context['navbar_subtitle'] = 'AAC로 노래해요'
+        context['navbar_subtitle'] = 'AAC 카드를 통해 노래를 배워봅시다.'
         context['images'] = image
         return context
