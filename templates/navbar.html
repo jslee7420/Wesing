@@ -4,11 +4,11 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/nav.css' %}">
 {% endblock %}
 
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar" role="navigation" aria-label="main navigation" style="{{ navbar_background }} ">
   <div class="container">
     <div class="navbar-top">
       <div class="navbar-brand">
-        <a class="navbar-item" href="#">
+        <a class="navbar-item" href="/">
           WESING
           <!-- <img src="\" width="112" height="28"> -->
         </a>
@@ -25,7 +25,7 @@
           AAC로 노래해요
         </a>
 
-        <a class="navbar-item">
+        <a class="navbar-item" href="{% url 'activity:activity_index' %}">
           AAC로 활동해요
         </a>
 

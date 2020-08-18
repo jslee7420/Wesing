@@ -16,7 +16,7 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('http://127.0.0.1:8000/board/')
+            return redirect('/board/')
     else:
         form = UserForm()
     return render(request, 'common/signup.html', {'form': form})
