@@ -8,14 +8,14 @@
 {% block content %}
 <div class="container">
     <div class="song-content">
-        <div class="song-imgs">
+        <div class="song-img">
 
         </div>
         <div class="song-lyrics">
 
         </div>
         <div class="song-player">
-
+            <audio id="song-audio" controls src="{% static "song/audio/" %}{{ song.title }}.mp3">
         </div>
     </div>
     <div class="song-info">
@@ -51,25 +51,25 @@
 {% endblock %}
 
 {% block script %}
-<script src="{% static 'js/howler.js' %}"></script>
-<script>
-    var sound = new Howl({
-        src: ['{% static "song/audio/" %}{{ song.title }}.mp3']
-    });
-</script>
 <script>
 var images = {}
-var lyrics = []
-var lyricsText = {{ song.lyric }}
-var timeline = []
-var timeLineText = {{ song.timeline }}
-var photos = []
-var photosText = {{ song.photos }}
+
+var lyrics = "{{ song.lyric }}"
+lyrics = lyrics.split('/')
+// 동그랗게, 그려요, 얼굴을, 그려요
+
+var photos = "{{ song.photos }}"
+photos = photos.split('/')
+// circle.jpg / draw.jpg / face.jpg / draw.jpg
+
+var timeLine = "{{ song.timeline }}"
+timeLine = timeLine.split('/')
+// 00:02 / 00:03 / 00:04 / 00:05 /
 
 {% for image in images %}
 images["{{ image.title }}.jpg"] = "{{ image.image }}"
 {% endfor %}
-
-console.log(images)
+</script>
+<script src="{% static 'js/song.js' %}">
 </script>
 {% endblock %}
