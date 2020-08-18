@@ -5,7 +5,6 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/song/list.css' %}">
 {% endblock %}
 
-
 {% block content %}
 <div class="container">
     <div class="song-search">
@@ -27,18 +26,20 @@
         </div>
     </div>
     <div class="song-list">
-        {% for song in object_list %}
-        <div class="song-item">
-            <a href="/song/{{ song.id }}">
-                <div class="song-thumbnail">
-                    <img src="{% static 'images/thumbnail.jpg' %}" alt="thumbnail">
-                </div>
-                <div class="song-title">
-                    {{ song.title }}
-                </div>
-            </a>
-        </div>
-        {% endfor %}
+        {% if object_list %}
+            {% for song in object_list %}
+            <div class="song-item">
+                <a href="/song/{{ song.id }}">
+                    <div class="song-thumbnail">
+                        <img src="/{{ song.thumbnail }}" alt="thumbnail">
+                    </div>
+                    <div class="song-title">
+                        {{ song.title }}
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        {% endif %}
     </div>
 </div>
 

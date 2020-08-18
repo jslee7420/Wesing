@@ -3,7 +3,8 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=django
 
 ## media files
-aac/
+static/song
+
 
 ### Django ###
 *.log

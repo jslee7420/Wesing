@@ -1,17 +1,75 @@
 {% extends 'base.html' %}
+{% load static %}
 
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/song/detail.css' %}">
+{% endblock %}
 
 {% block content %}
-    <h2>song</h2>
-    <ul>
-            <li>{{ song.title }}</li>
-            <li>{{ song.author }}</li>
-            <li>{{ song.audio }}</li>
-            <li>{{ song.lyric }}</li>
-            <li>{{ song.timeline }}</li>
-            <li>{{ song.like }}</li>
-            <li>{{ song.view }}</li>
-    </ul>
+<div class="container">
+    <div class="song-content">
+        <div class="song-img">
 
-    
+        </div>
+        <div class="song-lyrics">
+
+        </div>
+        <div class="song-player">
+            <audio id="song-audio" controls src="{% static "song/audio/" %}{{ song.title }}.mp3">
+        </div>
+    </div>
+    <div class="song-info">
+        <div class="song-info-left">
+            <div class="song-title">
+                {{ song.title }}
+            </div>
+        </div>
+        <div class="song-info-right">
+            <div class="song-like">
+                {{ song.like.count }}
+            </div>
+            <div class="song-view">
+                {{ song.view }}
+            </div>
+            <div class="song-fullscreen">
+
+            </div>
+        </div>
+    </div>
+    <div class="song-btns">
+        <div class="song-btn">
+
+        </div>
+        <div class="song-btn">
+
+        </div>
+        <div class="song-btn">
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+var images = {}
+
+var lyrics = "{{ song.lyric }}"
+lyrics = lyrics.split('/')
+// 동그랗게, 그려요, 얼굴을, 그려요
+
+var photos = "{{ song.photos }}"
+photos = photos.split('/')
+// circle.jpg / draw.jpg / face.jpg / draw.jpg
+
+var timeLine = "{{ song.timeline }}"
+timeLine = timeLine.split('/')
+// 00:02 / 00:03 / 00:04 / 00:05 /
+
+{% for image in images %}
+images["{{ image.title }}.jpg"] = "{{ image.image }}"
+{% endfor %}
+</script>
+<script src="{% static 'js/song.js' %}">
+</script>
 {% endblock %}
