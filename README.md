@@ -1,6 +1,5 @@
 ### Todo ✏️
 #### jinho1011
-- [ ] Implement Song Detail
 - [ ] Implement Activity Detail
 - [ ] Update Board, Common Style
 
@@ -11,7 +10,7 @@
 
 ### In Progress 🚀
 #### jinho1011
-- [ ] 
+- [ ] Implement Song Detail
 
 #### jslee7420
 - [ ] 
