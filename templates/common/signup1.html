@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/signup_new.css' %}?after">
+{% endblock %}
+
+{% block content %}
+<section class="signup-container">
+    <div class="header">
+        <h1>회원가입</h1>
+    </div>
+
+    <div class="steps">
+        <div class='circle is-active'>
+            step01<br>약관동의
+        </div>
+        <div class="line">
+            <hr>
+        </div>
+        <div class='circle '>
+            step02<br>개인정보
+        </div>
+        <div class="line">
+            <hr>
+        </div>
+        <div class='circle'>
+            step03<br>가입완료
+        </div>
+    </div>
+
+    <form method="post" class="post-form">
+        {% csrf_token %}
+        <div class="user_inputs">
+            <div class="item">
+                <div>
+                    <input type="checkbox" id="check_all"" name=" check_all" class="check_all">
+                    <label class="check_all" for="check_all">전체동의</label>
+                </div>
+            </div>
+            <div class="item">
+                <div>
+                    <input type="checkbox" id="Terms_of_use" name="Terms_of_use" class="" required>
+                    <label for="Terms_of_use">이용약관 동의(필수)</label>
+                </div>
+                <a class="modal-button">내용보기 ></a>
+                <!--모달 삽입-->
+            </div>
+            <div class="item">
+                <div>
+                    <input type="checkbox" id="privacy_policy" name="privacy_policy" class="" required>
+                    <label for="privacy_policy">개인정보 수집 및 이용에 대한 동의(필수)</label>
+                </div>
+                <a class="modal-button">내용보기 ></a>
+                <!--모달 삽입-->
+            </div>
+            <div class="item">
+                <div>
+                    <input type="checkbox" id="privacy_policy_extra" name="privacy_policy_extra"
+                        value="{{ form.privacy_policy_extra.value|default_if_none:False }}" class="">
+                    <label for="privacy_policy_extra">부가 개인정보 수집 및 이용에 대한 동의(선택)</label>
+                </div>
+                <a class="modal-button">내용보기 ></a>
+                <!--모달 삽입-->
+            </div>
+            <div class="item">
+                <div>
+                    <input type="checkbox" id="marketing" name="marketing"
+                        value="{{ form.marketing.value|default_if_none:False }}" class="">
+                    <label for="marketing">마케팅 활용에 대한 동의(선택)</label>
+                </div>
+                <a class="modal-button">내용보기 ></a>
+                <!--모달 삽입-->
+            </div>
+        </div>
+
+        <button type="submit" class="button is-rounded">다음</button>
+    </form>
+
+
+
+
+</section>
+
+
+{% endblock %}
+
+{% block script %}
+<!--내용보기 모달& 전체선택 위한 스크립트 작성-->
+{% endblock %}

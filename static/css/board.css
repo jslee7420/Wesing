@@ -38,14 +38,15 @@
 
 .table{
     margin-top:20px;
-    border-top:solid;
-    border-color:#CFCFCF;
-    border-width:2px;
 }
 
 .thead{
     height:50px;
     justify-content: center;
+    align-content: center;
+    border-top:solid;
+    border-color:#CFCFCF;
+    border-width:2px;
 }
 
 .post_detail_header{
@@ -62,4 +63,45 @@
     border:solid;
     border-radius:25px;
     border-width:1px;
+}
+
+.notice{
+    background-color:#F2F2FF; 
+    font-weight:bold
+}
+
+.black_font{
+    color:black;
+}
+
+.pagination{
+    text-align: center;
+    margin-top:50px;
+   
+}
+
+.page-item{
+    
+}
+
+li{
+    list-style: none;
+    width:30px;
+    height:30px;
+}
+
+
+.page-link{
+    color:black;
+}
+
+.active{
+    border-radius:50%;
+    
+    background-color:#7600FF;
+    color:white;
+}
+
+li a{
+    font-weight:bold;
 }

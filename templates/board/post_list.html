@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load board_filter %}
+
+{% block styles %}
+
+
+{% endblock %}
 {% block content %}
-    
+
 <div class="section">
     <div class="container content">
         <!--검색-->
@@ -9,9 +15,12 @@
             <div class="col">
                 <span class="search_bar">
                     <button type="button" id="btn_search">
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
-                            <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+                            <path fill-rule="evenodd"
+                                d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
                         </svg>
                     </button>
                     <input type="text" class="form-control kw" value="{{ kw|default_if_none:'' }}">
@@ -19,81 +28,90 @@
                 <a class="button is-rounded create_post" href="{% url 'board:post_new' %}">글 작성하기</a>
             </div>
         </div>
-        
+
         <table class="table is-fullwidth is-hoverable">
             <thead>
-            <tr class="thead">
-                <th>번호</th>
-                <th>제목</th>
-                <th>작성자</th>
-                <th>등록일</th>
-                <th>조회수</th>
-            </tr>
+                <tr class="thead">
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>등록일</th>
+                    <th>조회수</th>
+                </tr>
             </thead>
             <tbody>
-            {% if posts %}
-            {% for post in posts %}
-            <tr>
-                <td>
-                    {% if post.is_notice %}
-                        공지
+                {% if posts %}
+                {% for post in posts %}
+                <!--공지일 경우 출력 다르게-->
+                {% if post.is_notice %}
+                <tr class="notice">
                     {% else %}
-                        {{ posts.paginator.count|sub:posts.start_index|sub:forloop.counter0|add:1 }}
+                <tr>
                     {% endif%}
-                </td>
-                <td>
-                    <a href="{% url 'board:post_detail' post.id %}">{{ post.title }}</a>
-                </td>
-                <td>{{post.author}}</td>
-                <td>{{ post.created_date.date }}</td>
-                <td>{{post.view}}</td>
-            </tr>
-            {% endfor %}
-            {% else %}
-            <tr>
-                <td colspan="3">질문이 없습니다.</td>
-            </tr>
-            {% endif %}
+                    <td>
+                        {% if post.is_notice %}
+                        공지
+                        {% else %}
+                        {{ posts.paginator.count|sub:posts.start_index|sub:forloop.counter0|add:1 }}
+                        {% endif%}
+                    </td>
+                    <td>
+                        <a href="{% url 'board:post_detail' post.id %}" class="black_font">{{ post.title }}</a>
+                    </td>
+                    <td>{{post.author}}</td>
+                    <td>{{ post.created_date.date }}</td>
+                    <td>{{post.view}}</td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="3">질문이 없습니다.</td>
+                </tr>
+                {% endif %}
             </tbody>
         </table>
 
-         <!-- 페이징처리 시작 -->
-        <ul class="pagination justify-content-center">
-            <!-- 이전페이지 -->
-            {% if posts.has_previous %}
-            <li class="page-item">
-                <a class="page-link" data-page="{{ posts.previous_page_number }}" href="#"><</a>
-            </li>
-            {% else %}
-            <li class="page-item disabled">
-                <a class="page-link" tabindex="-1" aria-disabled="true" href="#"><</a>
-            </li>
-            {% endif %}
-            <!-- 페이지리스트 -->
-            {% for page_number in posts.paginator.page_range %}
-                {% if page_number >= posts.number|add:-5 and page_number <= posts.number|add:5 %}
-                    {% if page_number == posts.number %}
-                    <li class="page-item active" aria-current="page">
-                        <a class="page-link" data-page="{{ page_number }}" href="#">{{ page_number }}</a>
-                    </li>
-                    {% else %}
-                    <li class="page-item">
-                        <a class="page-link" data-page="{{ page_number }}" href="#">{{ page_number }}</a>
-                    </li>
-                    {% endif %}
+        <!-- 페이징처리 시작 -->
+        <div class="pagination is-centered">
+            <ul class="pagination-list">
+                <!-- 이전페이지 -->
+                {% if posts.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" data-page="{{ posts.previous_page_number }}" href="#">
+                        < </a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">
+                        < </a>
+                </li>
                 {% endif %}
-            {% endfor %}
-            <!-- 다음페이지 -->
-            {% if posts.has_next %}
-            <li class="page-item">
-                <a class="page-link" data-page="{{ posts.next_page_number }}" href="#">></a>
-            </li>
-            {% else %}
-            <li class="page-item disabled">
-                <a class="page-link" tabindex="-1" aria-disabled="true" href="#">></a>
-            </li>
-            {% endif %}
-        </ul>
+                <!-- 페이지리스트 -->
+                {% for page_number in posts.paginator.page_range %}
+                {% if page_number >= posts.number|add:-5 and page_number <= posts.number|add:5 %}
+                {% if page_number == posts.number %}
+                <li class="page-item" aria-current="page">
+                    <a class="page-link active" data-page="{{ page_number }}" href="#">{{ page_number }}</a>
+                </li>
+                {% else %}
+                <li class="page-item">
+                    <a class="page-link" data-page="{{ page_number }}" href="#">{{ page_number }}</a>
+                </li>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+                <!-- 다음페이지 -->
+                {% if posts.has_next %}
+                <li class="page-item">
+                    <a class="page-link" data-page="{{ posts.next_page_number }}" href="#">></a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">></a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
         <!-- 페이징처리 끝 -->
     </div>
     <form id="searchForm" method="get" action="{% url 'board:post_list' %}">
@@ -105,14 +123,15 @@
 
 
 {% block script %}
+<script src="{% static 'jquery-3.5.1.min.js' %}"></script>
 <script type='text/javascript'>
-$(document).ready(function(){
-    $(".page-link").on('click', function() {
+$(document).ready(function () {
+    $(".page-link").on('click', function () {
         $("#page").val($(this).data("page"));
         $("#searchForm").submit();
     });
 
-    $("#btn_search").on('click', function() {
+    $("#btn_search").on('click', function () {
         $("#kw").val($(".kw").val());
         $("#page").val(1);  // 검색버튼을 클릭할 경우 1페이지부터 조회한다.
         $("#searchForm").submit();

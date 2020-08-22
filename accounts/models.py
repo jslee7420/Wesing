@@ -10,3 +10,4 @@ class User(AbstractUser):
     teacher=models.BooleanField(default=False)
     parent=models.BooleanField(default=False)
     other_purpose=models.BooleanField(default=False)
+    

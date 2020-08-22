@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/signup_new.css' %}?after">
+{% endblock %}
+
+{% block content %}
+<section class="signup-container">
+    <div class="header">
+        <h1>회원가입</h1>
+    </div>
+
+    <div class="steps">
+        <div class='circle'>
+            step01<br>약관동의
+        </div>
+        <div class="line">
+            <hr>
+        </div>
+        <div class='circle '>
+            step02<br>개인정보
+        </div>
+        <div class="line">
+            <hr>
+        </div>
+        <div class='circle is-active'>
+            step03<br>가입완료
+        </div>
+    </div>
+
+    
+    <div class="inform">
+        회원가입 완료!
+    </div>
+
+    <a type="button" class="button is-rounded login" href="{% url 'common:login' %}">로그인 하러가기</button>
+
+
+
+
+
+</section>
+
+
+{% endblock %}
+
+{% block script %}
+<!--내용보기 모달& 전체선택 위한 스크립트 작성-->
+{% endblock %}

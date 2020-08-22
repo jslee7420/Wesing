@@ -1,0 +1,130 @@
+.signup-container{
+    width: 480px;
+    margin:auto;
+    margin-top:150px;
+    margin-bottom: 150px;
+}
+
+.header{
+    box-sizing:border-box;
+    height:100px;
+    display:grid;
+    align-content: center;
+    
+}
+
+.steps{
+    box-sizing:border-box;
+    display:grid;
+    grid-template-columns:auto auto auto auto auto;
+    justify-content: space-between;
+    height:130px;
+    grid-gap:0;
+}
+
+.user_inputs{
+    box-sizing:border-box;
+    padding-bottom:50px;
+}
+
+.button{
+    width:100%;
+    background-color:#FF5971;
+    color:white;
+    
+}
+
+h1{
+    text-align: center;
+    font-size:35px;
+    font-weight: 400;
+    color:black;
+}
+
+.circle {
+    display:grid;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border:solid;
+    border-width: 1px;
+    text-align: center;
+    font-size:12px;
+    align-content: center;
+    
+ }
+
+ .line{
+    width:105px;
+    height: 90px;
+    display:grid;
+    align-content: center;
+}
+
+.item{
+    box-sizing:border-box;
+    height:50px;
+    display:grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+}
+
+.check_all{
+    font-size:20px;
+}
+
+.modal-button{
+    background-color:transparent;
+    border:none;
+    color:#FF5971;
+    margin:0;
+    padding:0;
+    font-weight:bold;
+}
+
+*{
+    color:#707070;
+}
+
+.is-active{
+    border-color:#FF5971;
+    color:#FF5971;
+}
+
+
+hr{
+    background-color:#707070;
+}
+
+.textfield{
+    height:80px;
+
+}
+
+.purposes{
+    display:grid;
+    grid-template-columns: 40% 60%;
+}
+
+.signup-input{
+    width:100%;
+    height:45px;
+    padding-left:15px;
+    border-radius: 50px;
+    border-width: 1px;
+}
+
+.inform{
+text-align:center;
+font-size:35px;
+font-weight: 400;
+color:black;
+padding-bottom:30px;
+}
+
+.login{
+    background-color:white;
+    color:black;
+    box-shadow: 3px 3px 3px 3px #E8E8E8;
+    font-weight: bold;
+}

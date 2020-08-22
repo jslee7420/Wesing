@@ -1,22 +1,35 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/post_detail.css' %}?after">
+{% endblock %}
+
 
 {% block content %}
-
-    <div class="container content">
-        <div class="post_detail_header">
-            <div class="column is-6">{{post.title}}</span>
-            <span class="title">{{post.author}}</span>
-            <span class="title">{{post.published_date.date}}</span>
-            <span class="title">{{post.view}}</span>
+<section class="section">
+    <div class="container post_detail">
+        <div class="header">
+            <div class="title">{{post.title}}</div>
+            <div class="title">{{post.author}}</div>
+            <div class="title">{{post.published_date.date}}</div>
+            <div class="title">{{post.view}}</div>
         </div>
 
-        <div class="text">
-            {{post.text}}
-            <a type="button" href="{% url 'board:post_list' %}">목록보기</a>
-            <a type="button" href="{% url 'board:post_edit' pk=post.pk %}">수정</a>
+        <div class="body">
+            <div class="textarea">
+                {{post.text}}
+            </div>
+            <div class="buttons">
+                <a type="button" class="button is-rounded" href="{% url 'board:post_list' %}">목록보기</a>
+                <div class="control">
+                    <a type="button" class="button is-rounded" href="{% url 'board:post_edit' pk=post.pk %}">수정</a>
+                    <a type="button" class="button is-rounded" href="{% url 'board:post_edit' pk=post.pk %}">삭제</a>
+                </div>
+            </div>
         </div>
-        <a href="">삭제</a>
-        <div>
+        
+        <div class="comment">
             <h5>댓글</h5>
             <div>
                 <ul>
@@ -40,7 +53,7 @@
             </div>
         </div>
     </div>
-    
+</section>
     
 
 {% endblock %}

@@ -47,11 +47,11 @@ def post_new(request):
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
-
             return redirect('board:post_detail', pk=post.pk)
     else:
         form = PostForm()
-    return render(request, 'board/post_edit.html', {'form': form})
+        context={'navbar_title':'커뮤니티', 'navbar_subtitle':'커뮤니티에서 다양한 정보와 공지사항을 받아 보세요.'}
+        return render(request, 'board/post_edit.html', context)
 
 
 def post_edit(request, pk):

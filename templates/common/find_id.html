@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}?after">
+
+{% endblock %}
+
+
+
+
+{% block content %}
+<div class="container contents">
+    <div class="title">
+        <h1>아이디/비밀번호 찾기</h1>
+    </div>
+
+    <div class="toggle">
+        <a class="button is-rounded mode activea" href="#">아이디 찾기</a>
+        <a class="button is-rounded mode" href="{% url 'common:find_password' %}">비밀번호 찾기</a>  
+    </div>
+
+    <form method="post" class="post-form" action="">
+        {% csrf_token %}
+        
+        <div class="item">
+            <input type="text" class="login-input" name="name" id="name"
+                value="{{ form.name.value|default_if_none:'' }}" placeholder="이름">
+        </div>
+        <div class="item">
+            <input type="password" class="login-input" name="email" id="email"
+                value="{{ form.email.value|default_if_none:'' }}" placeholder="이메일">
+        </div>
+        
+        <div class="item">
+            <button type="submit" class="button is-rounded submit">확인</button>
+        </div>
+        
+    </form>   
+
+</div>
+{% endblock %}

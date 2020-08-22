@@ -1,10 +1,19 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate
 from django.shortcuts import render, redirect
 from common.forms import UserForm
 from accounts.models import User
 
 
-def signup(request):
+def signup1(request):
+    """
+    회원가입 첫번째 단계(약관동의)
+    """
+    if request.method=="POST":
+        return redirect('common:signup2')
+    return render(request, 'common/signup1.html')
+
+
+def signup2(request):
     """
     계정생성
     """
@@ -12,11 +21,29 @@ def signup(request):
         form = UserForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return redirect('http://127.0.0.1:8000/board/')
+            return redirect('common:signup3')
     else:
         form = UserForm()
-    return render(request, 'common/signup.html', {'form': form})
+    return render(request, 'common/signup2.html', {'form': form})
+
+
+
+
+def signup3(request):
+    """
+    회원가입 첫번째 단계(회원가입완료)
+    """
+    return render(request, 'common/signup3.html')
+
+
+def find_id(request):
+    """
+    아이디 찾기
+    """
+    return render(request, 'common/find_id.html')
+
+def find_password(request):
+    """
+    비밀번호 찾기
+    """
+    return render(request, 'common/find_password.html')

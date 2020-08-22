@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/signup_new.css' %}?after">
+{% endblock %}
+
+{% block content %}
+<section class="signup-container">
+    <div class="header">
+        <h1>회원가입</h1>
+    </div>
+
+    <div class="steps">
+        <div class='circle'>
+            step01<br>약관동의
+        </div>
+        <div class="line">
+            <hr>
+        </div>
+        <div class='circle is-active'>
+            step02<br>개인정보
+        </div>
+        <div class="line">
+            <hr>
+        </div>
+        <div class='circle'>
+            step03<br>가입완료
+        </div>
+    </div>
+
+    <form method="POST" class="post-form">
+        {% csrf_token %}
+        {% include "form_errors.html" %}
+        <div class="user_inputs">
+            <!--name-->
+            <div class='textfield'>
+                <label for="name">이름</label>    
+                <input type="text" class="signup-input" name="name" id="name" value="{{ form.name.value|default_if_none:'' }}" >
+            </div>
+            <!-- username -->
+            <div class='textfield'>
+                <label for="username">아이디</label>
+                <input type="text" class="signup-input" name="username" id="username" value="{{ form.username.value|default_if_none:'' }}" >
+            </div>
+            <!-- password -->
+            <div class='textfield'>
+                <label for="password">비밀번호</label>
+                <input type="password" class="signup-input" name="password1" id="password1" value="{{ form.password1.value|default_if_none:'' }}" >
+            </div>
+            <!-- password_confirm-->
+            <div class='textfield'>
+                <label for="password2">비밀번호  확인</label>
+                <input type="password" class="signup-input" name="password2" id="password2" value="{{ form.password2.value|default_if_none:'' }}" >
+            </div>
+            <!-- phone_number -->
+            <div class='textfield'>
+                <label for="phone_number">전화번호</label>
+                <input type="tel" class="signup-input" name="phone_number" id="phone_number" value="{{ form.phone_number.value|default_if_none:'' }}" 
+                placeholder="000 - 0000 - 0000" pattern="010[0-9]{4}[0-9]{4}">
+            </div>
+            <!-- email -->
+            <div class='textfield'>
+                <label for="email">이메일</label>
+                <input type="email" class="signup-input" name="email" id="email" value="{{ form.email.value|default_if_none:'' }}" placeholder="@">
+                
+            </div>
+            <!--가입목적란-->
+            <div class="purposes">
+                <div class="subtitl grey">
+                    목적<br>(중복선택 가능)
+                </div>
+                <div class="checklist grey">
+                    <!-- communication purpose -->
+                    <div class='form-group'>
+                        <input type="checkbox" class="form-control" name="communication_purpose" id="communication_purpose" value="{{ form.communication_purpose.value|default_if_none:'' }}">
+                        <label>의사소통을 위한 학습(장애 아동)</label>
+                    </div>
+                    <!-- understanding purpose -->
+                    <div class='form-group'>
+                        <input type="checkbox" class="form-control" name="understanding_purpose" id="understanding_purpose" value="{{ form.understanding_purpose.value|default_if_none:'' }}">
+                        <label>이해를 위한 학습(비장애 아동)</label>
+                    </div>
+                    <!-- teacher -->
+                    <div class='form-group'>
+                        <input type="checkbox" class="form-control" name="teacher" id="teacher" value="{{ form.teacher.value|default_if_none:False }}">
+                        <label>교사</label>
+                    </div>
+                    <!-- parent -->
+                    <div class='form-group'>
+                        <input type="checkbox" class="form-control" name="parent" id="parent" value="{{ form.parent.value|default_if_none:False }}">
+                        <label>학부모</label>
+                    </div>
+                    <!-- other purpose -->
+                    <div class='form-group'>
+                        <input type="checkbox" class="form-control" name="other_purpose" id="other_purpose" value="{{ form.other_purpose.value|default_if_none:False }}">
+                        <label>기타</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="button is-rounded">다음</button>
+    </form>
+
+
+
+
+</section>
+
+
+{% endblock %}
+
+{% block script %}
+<!--내용보기 모달& 전체선택 위한 스크립트 작성-->
+{% endblock %}

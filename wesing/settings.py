@@ -43,7 +43,6 @@ INSTALLED_APPS = [
 INSTALLED_APPS += [
     'song',
     'board',
-    #'accounts',
     'common',
     'accounts.apps.AccountsConfig',
 ]
@@ -135,5 +134,5 @@ STATICFILES_DIRS = [
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
-LOGIN_REDIRECT_URL = '/board'
-LOGOUT_REDIRECT_URL = '/board'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
