@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/nav.css' %}">
 {% endblock %}
 
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar" role="navigation" aria-label="main navigation" style="{{ navbar_background }} ">
   <div class="container">
     <div class="navbar-top">
       <div class="navbar-brand">
@@ -25,7 +25,7 @@
           AAC로 노래해요
         </a>
 
-        <a class="navbar-item">
+        <a class="navbar-item" href="{% url 'activity:activity_index' %}">
           AAC로 활동해요
         </a>
 
@@ -66,31 +66,3 @@
     </div>
   </div>
 </nav>
-
-
-
-<!-- <nav class="navbar navbar-expand-lg navbar-light">
-  <a class="navbar-brand" href="#">WeSing</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-    aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="#">ACC로 노래해요 <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">ACC로 활동해요</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'board:post_list' %}">커뮤니티</a>
-      </li>
-    </ul>
-    {% if user.is_authenticated %}
-    <a class="nav-link" href="{% url 'common:logout' %}">{{ user.username }} (로그아웃)</a>
-    {% else %}
-    <a class="nav-link" href="{% url 'common:login' %}">로그인</a>
-    {% endif %}
-  </div>
-</nav> -->

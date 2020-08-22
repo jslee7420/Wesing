@@ -26,27 +26,25 @@
         </div>
         <div class="song-info-right">
             <div class="song-like">
-            <i class="fas fa-thumbs-up"></i>
                 {{ song.like.count }}
             </div>
             <div class="song-view">
-            <i class="fas fa-eye"></i>
                 {{ song.view }}
             </div>
             <div class="song-fullscreen">
-            전체화면
+
             </div>
         </div>
     </div>
     <div class="song-btns">
-        <a class="song-btn" href="{% url 'song:song_index' %}">
-        목록보기
-        </a>
-        <a class="song-btn" href="{% url 'activity:activity_index' %}">
-활동하기
-        </a>
-        <div class="song-btn song-print">
-프린트하기
+        <div class="song-btn">
+
+        </div>
+        <div class="song-btn">
+
+        </div>
+        <div class="song-btn">
+
         </div>
     </div>
 </div>
@@ -54,25 +52,24 @@
 
 {% block script %}
 <script>
-    var images = {}
+var images = {}
 
-    var lyrics = "{{ song.lyric }}"
-    lyrics = lyrics.split('/')
-    // 동그랗게, 그려요, 얼굴을, 그려요
+var lyrics = "{{ song.lyric }}"
+lyrics = lyrics.split('/')
+// 동그랗게, 그려요, 얼굴을, 그려요
 
-    var photos = "{{ song.photos }}"
-    photos = photos.split('/')
-    // circle.jpg / draw.jpg / face.jpg / draw.jpg
+var photos = "{{ song.photos }}"
+photos = photos.split('/')
+// circle.jpg / draw.jpg / face.jpg / draw.jpg
 
-    var timeLine = "{{ song.timeline }}"
-    timeLine = timeLine.split('/')
-    // 00:02 / 00:03 / 00:04 / 00:05 /
+var timeLine = "{{ song.timeline }}"
+timeLine = timeLine.split('/')
+// 00:02 / 00:03 / 00:04 / 00:05 /
 
-    {%for image in images %}
-    images["{{ image.title }}.jpg"] = "{{ image.image }}" {%endfor %}
+{% for image in images %}
+images["{{ image.title }}.jpg"] = "{{ image.image }}"
+{% endfor %}
 </script>
 <script src="{% static 'js/song.js' %}">
-</script>
-<script src="{% static 'js/detail.js' %}">
 </script>
 {% endblock %}

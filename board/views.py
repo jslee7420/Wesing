@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from . models import Post
+from .models import Post
 from django.utils import timezone
 from .forms import PostForm
 from django.core.paginator import Paginator
@@ -27,7 +27,8 @@ def post_list(request):
     # 페이징처리
     paginator = Paginator(posts, 10)
     page_obj = paginator.get_page(page)
-    context = {'posts': page_obj, 'page': page, 'kw': kw,'navbar_title':'커뮤니티', 'navbar_subtitle':'커뮤니티에서 다양한 정보와 공지사항을 받아 보세요.'}
+    context = {'posts': page_obj, 'page': page, 'kw': kw,
+               'navbar_title': '커뮤니티', 'navbar_subtitle': '커뮤니티에서 다양한 정보와 공지사항을 받아 보세요.', 'navbar_background': 'background: linear-gradient(90deg, rgba(255,113,134,1) 0%, rgba(201,201,255,1) 0%, rgba(199,234,222,1) 100%);'}
     return render(request, 'board/post_list.html', context)
 
 
@@ -36,7 +37,7 @@ def post_detail(request, pk):
     # 조회수 증가시키기
     post.view += 1
     post.save()
-    return render(request, 'board/post_detail.html', {'post': post})
+    return render(request, 'board/post_detail.html', {'post': post, 'navbar_background': 'background: linear-gradient(90deg, rgba(255,113,134,1) 0%, rgba(201,201,255,1) 0%, rgba(199,234,222,1) 100%);'})
 
 
 def post_new(request):
@@ -66,7 +67,7 @@ def post_edit(request, pk):
             return redirect('board:post_detail', pk=post.pk)
     else:
         form = PostForm(instance=post)
-    return render(request, 'board/post_edit.html', {'form': form})
+    return render(request, 'board/post_edit.html', {'form': form, 'navbar_background': 'background: linear-gradient(90deg, rgba(255,113,134,1) 0%, rgba(201,201,255,1) 0%, rgba(199,234,222,1) 100%);'})
 
 
 def answer_create(request, post_id):

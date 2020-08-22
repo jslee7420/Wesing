@@ -5,21 +5,17 @@ from accounts.models import User
 
 class Song(models.Model):
     title = models.CharField(max_length=250)
-    author = models.CharField(max_length=250)
-    audio = models.FileField(upload_to='aac/')
+    thumbnail = models.ImageField(upload_to='static/song/thumbnail')
+    audio = models.FileField(upload_to='static/song/audio')
     lyric = models.TextField()
     timeline = models.TextField()
-    like = models.ManyToManyField(User)
+    photos = models.TextField()
+    like = models.ManyToManyField(User, blank=True)
     view = models.PositiveIntegerField(default=0)
 
 
-def get_image_filename(instance, filename):
-    id = instance.post.id
-    return "aac/%s" % (id)
-
-
-class Images(models.Model):
+class Image(models.Model):
     song = models.ForeignKey(
         Song, blank=False, null=False, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to=get_image_filename,
-                              verbose_name='Image')
+    title = models.CharField(max_length=250)
+    image = models.ImageField(upload_to='static/song/images')

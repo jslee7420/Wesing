@@ -6837,7 +6837,6 @@ a.navbar-item.is-active,
   .navbar {
     min-height: 3.25rem;
     background: rgb(255, 113, 134);
-    background: linear-gradient(90deg, rgba(255, 113, 134, 1) 0%, rgba(236, 170, 97, 1) 50%, rgba(218, 221, 64, 1) 100%);
   }
 
   .navbar.is-spaced {

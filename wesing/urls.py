@@ -10,4 +10,5 @@ urlpatterns = [
     path('song/', include('song.urls')),
     path('common/', include('common.urls')),
     path('',views.index, name='index'),
+    path('activity/', include('activity.urls')),
 ]
