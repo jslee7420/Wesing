@@ -43,6 +43,7 @@
 .song-info {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 20px;
 }
 
 .song-title {
@@ -76,4 +77,29 @@
 .song-fullscreen:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     transform: scale(1.01);
+}
+
+.song-btns {
+    display: flex;
+    gap: 14px;
+    justify-content: flex-start;
+}
+
+.song-btns .song-btn {
+    padding: 8px 18px;
+    border-radius: 20px;
+    color: #808080;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    transition: .2s;
+}
+
+.song-btns .song-btn:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    transform: scale(1.01);
+}
+
+.song-btns .song-btn:first-child {
+    background-color: #FF4D67;
+    color: white;
 }

@@ -39,14 +39,14 @@
         </div>
     </div>
     <div class="song-btns">
-        <div class="song-btn">
-
-        </div>
-        <div class="song-btn">
-
-        </div>
-        <div class="song-btn">
-
+        <a class="song-btn" href="{% url 'song:song_index' %}">
+        목록보기
+        </a>
+        <a class="song-btn" href="{% url 'activity:activity_index' %}">
+활동하기
+        </a>
+        <div class="song-btn song-print">
+프린트하기
         </div>
     </div>
 </div>
