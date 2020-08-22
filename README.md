@@ -10,7 +10,7 @@
 
 ### In Progress 🚀
 #### jinho1011
-- [ ] Implement Song Detail
+- [X] Implement Song Detail
 
 #### jslee7420
 - [ ] 
