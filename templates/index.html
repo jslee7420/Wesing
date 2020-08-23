@@ -2,13 +2,152 @@
 {% load static %}
 
 {% block styles %}
-<link rel="stylesheet" type="text/css" href="#">
-
+<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
 {% endblock %}
 
 
-
-
 {% block content %}
-여기는 홈화면입니다.
+
+<!--홈화면-->
+<section>
+    <div class="container">
+        <div class="columns is-centerd">
+            <div class="column is-half is-offset-one-quarter">
+                <h1 id="main_title" class="Jalnan_font text-center pink_font">위씽</h1>
+                <h2 class="Jalnan_font small-title text-center orange_font">WeSing</h2>
+                <div class="exp text-center">장애아동과 비장애아동이 함께하는 ACC 노래교실</div>
+                <img class="children_singing" src="{% static 'images/children.svg' %}" alt="children singing">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--카테고리 소개-->
+<section>
+    <div class="container">
+        <div class="columns">
+            <div class="column is-one-third">
+                <div class="category text-center pink_font">
+                    노래해요
+                </div>
+                <div class="underline">
+                    <div class="line pink_background"></div>
+                </div>
+                <div class="explanation text-center">
+                    AAC카드로 노래를 배웁니다
+                </div>
+                <div class="link text-center">
+                    <a class="button circle" href="{% url 'song:song_index' %}"><i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="column is-one-third">
+                <div class="category text-center green_font">
+                    활동해요
+                </div>
+                <div class="underline">
+                    <div class="line green_background"></div>
+                </div>
+                <div class="explanation text-center">
+                    배운 노래를 응용해봅시다
+                </div>
+                <div class="link text-center">
+                    <a class="button circle" href="{% url 'activity:activity_index' %}"><i
+                            class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="column is-one-third">
+                <div class="category text-center orange_font">
+                    커뮤니티
+                </div>
+                <div class="underline">
+                    <div class="line orange_background"></div>
+                </div>
+                <div class="explanation text-center">
+                    공지사항 및 게시판 입니다
+                </div>
+                <div class="link text-center">
+                    <a class="button circle" href="{% url 'board:post_list' %}"><i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!--사이트 소개-->
+<section>
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-two-thirds text-center">
+                <h2 class="Jalnan_font text-center site_intro_title">위씽 WeSing</h2>
+                <img class="site_intro_width" src="{% static 'images/site_intro.jpg' %}" alt="site intro">
+                <p class="exp">장애아동과 비장애아동이 함께 노래를 하고,
+                    원활하게 소통하길 바라는 저희의 바램을 담았습니다.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--AAC소개-->
+<section>
+
+    <div class="AAC_title Jalnan_font">
+        AAC를 아시나요?
+    </div>
+    <div class="underline2">
+    </div>
+    <div class="container">
+        <div class="aac_content">
+            AAC란 말하기와 쓰기로 의사소통이 힘든 사람들과 몸짓,
+            사진, 그림 등으로 의사소통하는 모든 전략과 방법을 의미합니다.<br><br>
+            AAC를 통해 장애아동의 의사소통 능력을 향상 시키고 또래와의 상호작용 및
+            일상생활 등 적극적인 참여를 촉진할 수 있습니다.<br><br>
+            우리는 AAC를 활성화시키기 위해 '장애아동에게 AAC를 사용할 수 있는 능력을 증진'과
+            '대화 상대의 역량 강화' 및 AAC에 대한 긍정적 인식이 필요합니다.
+        </div>
+        <div class="aac_exp pink_font">
+            <strong class="Jalnan_font green_font">위씽</strong> 은 장애아동 교육에 초점을 둔 기존의 AAC를 넘어,<br>
+            장애학생뿐만 아니라 일반학생이 쉽고 재미있게 학습할 수 있는<br>
+            AAC 음악 교육 사이트입니다.
+        </div>
+    </div>
+</section>
+
+
+<!--후원-->
+<section>
+    <div class="container">
+        <div class="donation-title text-center">
+            의사소통이 힘든 사람들의 의사소통방식 [AAC]<br>
+            <strong class="Jalnan_font pink_font ">위씽</strong>을 통해
+        </div>
+        <div class="grid-container">
+            <div class="columns gets">
+                <div class="column">
+                    <button type="none" class="button is-rounded shadow">AAC를 함께 배우다</button>
+                </div>
+                <div class="column">
+                    <button type="none" class="button is-rounded shadow">노래를 통한 낮은 진입장벽</button>
+                </div>
+                <div class="column">
+                    <button type="none" class="button is-rounded shadow">일반학생 인식개선</button>
+                </div>
+                <div class="column">
+                    <button type="none" class="button is-rounded shadow">주도적인 반복학습</button>
+                </div>
+            </div>
+        </div>
+        <div class="donation_exp text-center">
+            학교친구, 가족 혹은 지인과의 소통을 위한 학습<br>우리도 학습이 필요합니다.
+        </div>
+        <div class="donation_btn text-center">
+            <a class="button is-rounded pink_background donation">후원하기</a>
+        </div>
+    </div>
+</section>
 {% endblock %}

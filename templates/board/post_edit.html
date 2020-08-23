@@ -10,11 +10,12 @@
     <div class= "post_edit-container">
         <form method="POST">
             {% csrf_token %}
+            {% include "form_errors.html" %}
             <div class="titlearea">
-                <input type="text" class="full" placeholder="제목을 써주세요.">
+                <input type="text" class="full" name="title" id="title" value="{{ form.title.value|default_if_none:'' }}" placeholder="제목을 써주세요.">
             </div>
             <div class="textarea">
-                <textarea class="full" placeholder="내용을 써주세요."></textarea>
+                <textarea class="full" name="text" id="text" value="{{ form.text.value|default_if_none:'' }}" placeholder="내용을 써주세요."></textarea>
             </div>
             <div class="submit_area">
                 <button type="submit" class="button is-rounded save">저장</button>

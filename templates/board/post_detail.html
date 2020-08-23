@@ -21,39 +21,55 @@
                 {{post.text}}
             </div>
             <div class="buttons">
-                <a type="button" class="button is-rounded" href="{% url 'board:post_list' %}">목록보기</a>
+                <a type="button" class="button is-rounded purple" href="{% url 'board:post_list' %}">목록보기</a>
                 <div class="control">
-                    <a type="button" class="button is-rounded" href="{% url 'board:post_edit' pk=post.pk %}">수정</a>
-                    <a type="button" class="button is-rounded" href="{% url 'board:post_edit' pk=post.pk %}">삭제</a>
+                    <a type="button" class="button is-rounded shadow"
+                        href="{% url 'board:post_edit' pk=post.pk %}">수정</a>
+                    <a type="button" class="button is-rounded shadow delete1"
+                        href="#" data-uri="{% url 'board:post_delete' post.id  %}">삭제</a>
                 </div>
             </div>
         </div>
-        
-        <div class="comment">
+
+        <div class="comments">
             <h5>댓글</h5>
-            <div>
-                <ul>
-                {% for answer in post.answer_set.all %}
-                    <li>
-                        <div>
-                            {{answer.author}}
-                            {{ answer.content }}
-                            {{answer.created_date.date}}
-                        </div>
-                    </li>
-                {% endfor %}
-                </ul>
-            </div>
-            <div>
-                <form action="{% url 'board:answer_create' post.id %}" method="post">
-                    {% csrf_token %}
-                    <textarea name="content" id="content" rows="15"></textarea>
-                    <input type="submit" value="등록">
-                </form>
+            <div class="comments_size">
+                <div class="comments_area">
+                    {% for answer in post.answer_set.all %}
+                    <div class="comment">
+                        <div class="img">이미지 여기에</div>
+                        <div class="comment_author">{{answer.author}}</div>
+                        <div class="comment_content">{{ answer.content }}</div>
+                        <div class="comment_pushplished_datetime">{{answer.created_date}}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="comment_create">
+                    <form action="{% url 'board:answer_create' post.id %}" method="post">
+                        {% csrf_token %}
+                        {% include "form_errors.html" %}
+                        <textarea class="full" name="content" id="content" rows="15"
+                            placeholder="댓글을 남겨보세요."></textarea>
+                        <button class="button is-rounded shadow" type="submit">등록</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </section>
-    
 
+
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'jquery-3.5.1.min.js' %}"></script>
+<script type='text/javascript'>
+$(document).ready(function(){
+    $(".delete1").on('click', function() {
+        if(confirm("정말로 삭제하시겠습니까?")) {
+            location.href = $(this).data('uri');
+        }
+    });
+});
+</script>
 {% endblock %}

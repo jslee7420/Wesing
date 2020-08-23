@@ -4,7 +4,7 @@ from django.utils import timezone
 from .forms import PostForm
 from django.core.paginator import Paginator
 from django.db.models import Q
-
+from django.contrib import messages
 # Create your views here.
 
 
@@ -33,6 +33,9 @@ def post_list(request):
 
 
 def post_detail(request, pk):
+    """
+        게시물 내용 보기
+    """
     post = get_object_or_404(Post, pk=pk)
     # 조회수 증가시키기
     post.view += 1
@@ -41,6 +44,9 @@ def post_detail(request, pk):
 
 
 def post_new(request):
+    """
+        새게시물 작성
+    """
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
@@ -49,6 +55,7 @@ def post_new(request):
             post.published_date = timezone.now()
             post.save()
             return redirect('board:post_detail', pk=post.pk)
+
     else:
         form = PostForm()
         context={'navbar_title':'커뮤니티', 'navbar_subtitle':'커뮤니티에서 다양한 정보와 공지사항을 받아 보세요.'}
@@ -56,6 +63,9 @@ def post_new(request):
 
 
 def post_edit(request, pk):
+    """
+        게시물 수정
+    """
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
         form = PostForm(request.POST, instance=post)
@@ -78,3 +88,15 @@ def answer_create(request, post_id):
     post.answer_set.create(content=request.POST.get(
         'content'), created_date=timezone.now(), author=request.user)
     return redirect('board:post_detail', pk=post.id)
+
+
+def post_delete(request,post_id):
+    """
+    게시물 삭제
+    """
+    post= get_object_or_404(Post, pk=post_id)
+    if request.user != post.author:
+        messages.error(request, '삭제권한이 없습니다')#작동안함 원인 불명
+        return redirect('board:post_detail',pk=post.id)
+    post.delete()
+    return redirect('board:post_list')
