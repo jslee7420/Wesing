@@ -4,9 +4,6 @@
 - [ ] Update Board, Common Style
 
 #### jslee7420
-- [ ] Implement authorization
-- [ ] Add Board Footer
-- [ ] Implement login maintenance
 - [ ] Implement ID/Password finding
 
 ### In Progress 🚀
@@ -14,8 +11,7 @@
 - [X] Implement Song Detail
 
 #### jslee7420
-- [X] Implement Signup page
-
+- [ ] Implement login maintenance
 
 
 ### Done ✓
@@ -24,3 +20,6 @@
 - [X] Add index page
 - [X] Implement board page
 - [X] Implement signin page
+- [X] Implement authorization
+- [X] Add Board Footer
+- [X] Implement Signup page

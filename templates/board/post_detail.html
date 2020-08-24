@@ -22,12 +22,14 @@
             </div>
             <div class="buttons">
                 <a type="button" class="button is-rounded purple" href="{% url 'board:post_list' %}">목록보기</a>
+                {% if request.user == post.author %}
                 <div class="control">
                     <a type="button" class="button is-rounded shadow"
                         href="{% url 'board:post_edit' pk=post.pk %}">수정</a>
                     <a type="button" class="button is-rounded shadow delete1"
                         href="#" data-uri="{% url 'board:post_delete' post.id  %}">삭제</a>
                 </div>
+                {% endif %}
             </div>
         </div>
 
@@ -44,6 +46,7 @@
                     </div>
                     {% endfor %}
                 </div>
+                {% if user.is_authenticated %}
                 <div class="comment_create">
                     <form action="{% url 'board:answer_create' post.id %}" method="post">
                         {% csrf_token %}
@@ -53,12 +56,13 @@
                         <button class="button is-rounded shadow" type="submit">등록</button>
                     </form>
                 </div>
+                {% endif %}
             </div>
         </div>
     </div>
 </section>
 
-
+{% include "footer.html" %}
 {% endblock %}
 
 {% block script %}

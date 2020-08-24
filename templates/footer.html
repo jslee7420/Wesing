@@ -1,0 +1,47 @@
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
+{% endblock %}
+
+<footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-left">
+                <div class="level-item">
+                    <div class="columns">
+                        <div class="column">
+                            <div class="row">
+                                <span>(주)한글과 컴퓨터</span>
+                                <span>대표자: 가나다</span>
+                                <span>사업자등록번호: 000-00-00000</span>
+                                <span>통신판매신고번호: 0000-경기성남-0000</span>
+                            </div>
+                            <div>
+                                <p>주소: 경기도 성남시 분당구 대왕판교로 644번가 49</p>
+                            </div>
+                            <div>
+                                <span>개인정보관리책임자: 가나다</span>
+                                <span>E-mail: abcdef@aaa.bb.cc</span>
+                                <span>고객지원: 평일 9시~18시</span>
+
+                            </div>
+                            <div>
+                                Copyriwght 2020 Hancom Inc. all rights reserved
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="level-right">
+                <div class="level-item">
+                    <a class="sns_link"><img src="{% static 'images/facebook_icon.jpg' %}" alt="facebook_icon"></a>
+                    <a class="sns_link"><img src="{% static 'images/instagram_icon.jpg' %}" alt="instagram_icon"></a>
+                    <a class="sns_link"><img src="{% static 'images/youtube_icon.jpg' %}" alt="youtube_icon"></a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</footer>

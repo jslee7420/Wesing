@@ -80,9 +80,6 @@
    
 }
 
-.page-item{
-    
-}
 
 li{
     list-style: none;
@@ -90,15 +87,26 @@ li{
     height:30px;
 }
 
-
+.page-item{
+    border-radius:50%;
+    width:20px;
+    height:20px;
+    margin-left:5px;
+    margin-right:5px;
+    display:grid;
+    align-content: center;
+}
 .page-link{
     color:black;
 }
 
 .active{
     border-radius:50%;
-    
     background-color:#7600FF;
+   
+}
+
+.font-white{
     color:white;
 }
 

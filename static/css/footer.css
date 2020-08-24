@@ -1,0 +1,25 @@
+.footer{
+    background-color:white;
+    height:200px;
+    border-top:solid;
+    border-color:#969696;
+    margin-bottom:0px;
+    border-width: 1px;;
+}
+
+footer .container{
+    width:100%;
+    font-size:12px;
+    color:#828282;
+    
+
+}
+
+.sns_link{
+    margin-left:20px;
+}
+
+footer span{
+    margin-right:10px;
+}
+
