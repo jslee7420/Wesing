@@ -8,7 +8,6 @@
 
 ### In Progress 🚀
 #### jinho1011
-- [X] Implement Song Detail
 
 #### jslee7420
 - [ ] Implement login maintenance
@@ -23,3 +22,4 @@
 - [X] Implement authorization
 - [X] Add Board Footer
 - [X] Implement Signup page
+- [X] Implement Song Detail
